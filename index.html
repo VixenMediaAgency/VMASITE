@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIXEN MEDIA AGENCY</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -16,84 +17,81 @@
 
     <header>
         <nav>
-            <a href="#politics">POLITICS</a>
-            <a href="#rumours">RUMOURS</a>
-            <a href="#life">LIFE BLOG</a>
-            <a href="#metrics">METRICS</a>
-            <a href="#market">SERVICES</a>
-            <a href="#vix">THE VIX</a>
-            <a href="#contact">CONTACT</a>
+            <div class="nav-links">
+                <a href="#politics">POLITICS</a>
+                <a href="#rumours">RUMOURS</a>
+                <a href="#life">LIFE BLOG</a>
+                <a href="#metrics">METRICS</a>
+                <a href="#market">SERVICES</a>
+                <a href="#vix">THE VIX</a>
+                <a href="#contact">CONTACT</a>
+            </div>
         </nav>
-        <h1 class="logo">VI<span id="secret-trigger">X</span>EN MEDIA AGENCY</h1>
+        <h1 class="main-title">VI<span id="secret-trigger">X</span>EN<br>MEDIA AGENCY</h1>
     </header>
 
     <main>
         <section id="politics">
-            <h2>POLITICS</h2>
+            <h2 class="section-label">POLITICS</h2>
             <div class="grid">
-                <article><h3>Article Title</h3><p>Brief summary of the political landscape...</p><a href="#">Read More</a></article>
-                <article><h3>Article Title</h3><p>Brief summary of the political landscape...</p><a href="#">Read More</a></article>
+                <article class="card"><h3>THE CAPITAL REPORT</h3><p>Analysis of the current power shifts.</p><a href="#" class="mini-btn">READ →</a></article>
+                <article class="card"><h3>POLICY WATCH</h3><p>What they aren't telling you about the new bill.</p><a href="#" class="mini-btn">READ →</a></article>
             </div>
         </section>
 
         <section id="rumours">
-            <h2>RUMOURS</h2>
+            <h2 class="section-label">RUMOURS</h2>
             <div class="grid">
-                <article><h3>The Latest</h3><p>Whispers from the industry...</p><a href="#">Read More</a></article>
-                <article><h3>The Latest</h3><p>Whispers from the industry...</p><a href="#">Read More</a></article>
+                <article class="card highlight"><h3>WHISPER NETWORK</h3><p>Industry secrets leaked from the top floor.</p><a href="#" class="mini-btn">READ →</a></article>
+                <article class="card"><h3>UNVERIFIED</h3><p>Late night sightings and unconfirmed reports.</p><a href="#" class="mini-btn">READ →</a></article>
             </div>
         </section>
 
         <section id="life">
-            <h2>LIFE BLOG</h2>
+            <h2 class="section-label">LIFE BLOG</h2>
             <div class="grid">
-                <article><h3>Lifestyle</h3><p>Inside the Vixen life...</p><a href="#">Read More</a></article>
+                <article class="card"><h3>VIXEN LIFESTYLE</h3><p>The aesthetic of the agency.</p><a href="#" class="mini-btn">VIEW →</a></article>
             </div>
         </section>
 
         <section id="metrics">
-            <h2>METRICS</h2>
+            <h2 class="section-label">METRICS</h2>
             <div class="grid">
-                <article><h3>Data Report</h3><p>Engagement and reach analysis...</p><a href="#">Read More</a></article>
+                <article class="card"><h3>DATA POINTS</h3><p>Visualizing the influence of Vixen Media.</p><a href="#" class="mini-btn">OPEN →</a></article>
             </div>
         </section>
 
-        <section id="market" class="text-block">
-            <h2>MARKET RESEARCH SERVICES</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <section id="market" class="text-block sticker">
+            <h2 class="section-label">MARKET RESEARCH</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         </section>
 
         <section id="vix">
-            <h2>THE VIX</h2>
-            <p class="subtitle">Employment & Corporate Team</p>
+            <h2 class="section-label">THE VIX (CAREERS)</h2>
             <div class="team-grid">
                 <div class="member">
-                    <div class="headshot-placeholder">PHOTO</div>
-                    <h3>Name Surname</h3>
-                    <p>Job Title</p>
-                    <p>contact@vixenmedia.com</p>
+                    <div class="photo-box">PHOTO</div>
+                    <h3>CEO NAME</h3>
+                    <p>FOUNDER / DIRECTOR</p>
                 </div>
                 <div class="member">
-                    <div class="headshot-placeholder">PHOTO</div>
-                    <h3>Name Surname</h3>
-                    <p>Job Title</p>
-                    <p>contact@vixenmedia.com</p>
+                    <div class="photo-box">PHOTO</div>
+                    <h3>TALENT LEAD</h3>
+                    <p>HEAD OF RECRUITMENT</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="text-block">
-            <h2>CONTACT US</h2>
-            <p>Ready to work with Vixen? Reach out to our primary office or use the directory in THE VIX section for specific inquiries. Our team responds within 24 hours.</p>
+        <section id="contact" class="text-block sticker">
+            <h2 class="section-label">CONTACT US</h2>
+            <p>Ready to join the agency? Send inquiries to the secure server or find us on encrypted channels. Our response time is immediate.</p>
         </section>
     </main>
 
     <script>
         const trigger = document.getElementById('secret-trigger');
-        const body = document.body;
-        
         trigger.addEventListener('click', () => {
-            body.classList.toggle('secret-mode');
+            document.body.classList.toggle('secret-mode');
         });
     </script>
 </body>
