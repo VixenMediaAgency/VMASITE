@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIXEN MEDIA AGENCY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="secret-ticker" class="ticker-wrap">
+        <div class="ticker">
+            SHAME IS THE ONLY TOOL LEFT TO FIGHT BACK AGAINST CORRUPTION. — SHAME IS THE ONLY TOOL LEFT TO FIGHT BACK AGAINST CORRUPTION. — 
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="#politics">POLITICS</a>
+            <a href="#rumours">RUMOURS</a>
+            <a href="#life">LIFE BLOG</a>
+            <a href="#metrics">METRICS</a>
+            <a href="#market">SERVICES</a>
+            <a href="#vix">THE VIX</a>
+            <a href="#contact">CONTACT</a>
+        </nav>
+        <h1 class="logo">VI<span id="secret-trigger">X</span>EN MEDIA AGENCY</h1>
+    </header>
+
+    <main>
+        <section id="politics">
+            <h2>POLITICS</h2>
+            <div class="grid">
+                <article><h3>Article Title</h3><p>Brief summary of the political landscape...</p><a href="#">Read More</a></article>
+                <article><h3>Article Title</h3><p>Brief summary of the political landscape...</p><a href="#">Read More</a></article>
+            </div>
+        </section>
+
+        <section id="rumours">
+            <h2>RUMOURS</h2>
+            <div class="grid">
+                <article><h3>The Latest</h3><p>Whispers from the industry...</p><a href="#">Read More</a></article>
+                <article><h3>The Latest</h3><p>Whispers from the industry...</p><a href="#">Read More</a></article>
+            </div>
+        </section>
+
+        <section id="life">
+            <h2>LIFE BLOG</h2>
+            <div class="grid">
+                <article><h3>Lifestyle</h3><p>Inside the Vixen life...</p><a href="#">Read More</a></article>
+            </div>
+        </section>
+
+        <section id="metrics">
+            <h2>METRICS</h2>
+            <div class="grid">
+                <article><h3>Data Report</h3><p>Engagement and reach analysis...</p><a href="#">Read More</a></article>
+            </div>
+        </section>
+
+        <section id="market" class="text-block">
+            <h2>MARKET RESEARCH SERVICES</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </section>
+
+        <section id="vix">
+            <h2>THE VIX</h2>
+            <p class="subtitle">Employment & Corporate Team</p>
+            <div class="team-grid">
+                <div class="member">
+                    <div class="headshot-placeholder">PHOTO</div>
+                    <h3>Name Surname</h3>
+                    <p>Job Title</p>
+                    <p>contact@vixenmedia.com</p>
+                </div>
+                <div class="member">
+                    <div class="headshot-placeholder">PHOTO</div>
+                    <h3>Name Surname</h3>
+                    <p>Job Title</p>
+                    <p>contact@vixenmedia.com</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="text-block">
+            <h2>CONTACT US</h2>
+            <p>Ready to work with Vixen? Reach out to our primary office or use the directory in THE VIX section for specific inquiries. Our team responds within 24 hours.</p>
+        </section>
+    </main>
+
+    <script>
+        const trigger = document.getElementById('secret-trigger');
+        const body = document.body;
+        
+        trigger.addEventListener('click', () => {
+            body.classList.toggle('secret-mode');
+        });
+    </script>
+</body>
+</html>
