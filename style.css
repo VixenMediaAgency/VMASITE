@@ -1,17 +1,17 @@
 :root {
     --black: #000000;
-    --hot-pink: #FF007F; /* Vibrant Hot Pink */
+    --hot-pink: #FF007F;
     --bubblegum: #FFC1CC;
     
-    /* Default Mode Mapping */
+    /* DEFAULT COLORS */
     --bg: var(--black);
     --main-text: var(--hot-pink);
     --accent: var(--bubblegum);
-    --card-bg: #111;
+    --card-bg: #0a0a0a;
 }
 
-/* The Inversion Logic - Keeps it readable but swaps the "Vibe" */
 .secret-mode {
+    /* INVERTED COLORS: Hot Pink Bg, Black/Bubblegum Details */
     --bg: var(--hot-pink);
     --main-text: var(--black);
     --accent: var(--bubblegum);
@@ -25,22 +25,21 @@ body {
     color: var(--main-text);
     font-family: 'Space Grotesk', sans-serif;
     margin: 0;
-    overflow-x: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Hyperpop Ticker */
+/* THE SECRET TICKER */
 .ticker-wrap {
     display: none;
     width: 100%;
     background: var(--main-text);
     color: var(--bg);
-    padding: 15px 0;
+    padding: 12px 0;
     font-family: 'Archivo Black', sans-serif;
     position: fixed;
     top: 0;
-    z-index: 9999;
-    border-bottom: 4px solid var(--accent);
+    z-index: 10000;
+    border-bottom: 5px solid var(--accent);
 }
 
 .secret-mode .ticker-wrap { display: block; }
@@ -48,8 +47,8 @@ body {
 .ticker {
     display: inline-block;
     white-space: nowrap;
-    animation: scroll 15s linear infinite;
-    font-size: 1.2rem;
+    animation: scroll 20s linear infinite;
+    font-size: 1.1rem;
 }
 
 @keyframes scroll {
@@ -57,47 +56,28 @@ body {
     to { transform: translateX(-100%); }
 }
 
-/* Massive Title */
+/* BIG MONOLITH HEADER */
 header {
-    padding: 100px 20px 50px;
+    padding: 80px 20px 40px;
     text-align: center;
 }
 
-.main-title {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(3rem, 15vw, 12rem); /* Dynamic huge sizing */
-    line-height: 0.8;
-    margin: 0;
-    letter-spacing: -2px;
-    text-transform: uppercase;
-    word-break: break-all;
-}
-
-#secret-trigger {
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-#secret-trigger:hover {
-    color: var(--accent);
-}
-
-/* Nav */
 .nav-links {
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
-    margin-bottom: 20px;
 }
 
 .nav-links a {
     color: var(--main-text);
     text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    padding: 5px 10px;
-    border: 2px solid var(--main-text);
+    font-weight: 700;
+    padding: 5px 12px;
+    border: 3px solid var(--main-text);
+    font-size: 0.8rem;
+    transition: 0.2s;
 }
 
 .nav-links a:hover {
@@ -105,75 +85,101 @@ header {
     color: var(--bg);
 }
 
-/* Content Grid */
+.main-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3rem, 18vw, 15rem);
+    line-height: 0.8;
+    margin: 0;
+    letter-spacing: -4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.line:last-child { color: var(--accent); }
+.secret-mode .line:last-child { color: var(--black); }
+
+#secret-trigger { cursor: pointer; }
+
+/* LAYOUT & CARDS */
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
+section { margin-bottom: 100px; }
+
 .section-label {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-decoration: underline var(--accent);
+    font-size: 3rem;
+    border-bottom: 8px solid var(--main-text);
+    display: inline-block;
+    margin-bottom: 30px;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-bottom: 60px;
 }
 
-/* Sticker/Bubblepop Card Style */
 .card {
     background: var(--card-bg);
-    border: 4px solid var(--main-text);
-    padding: 25px;
-    box-shadow: 10px 10px 0px var(--main-text);
-    transition: transform 0.2s;
+    border: 5px solid var(--main-text);
+    padding: 30px;
+    box-shadow: 12px 12px 0px var(--main-text);
+    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 15px 15px 0px var(--accent);
-}
+.card:hover { transform: translate(-5px, -5px); box-shadow: 18px 18px 0px var(--accent); }
 
 .mini-btn {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 20px;
     background: var(--main-text);
     color: var(--bg);
-    padding: 8px 15px;
+    padding: 10px 20px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: bold;
 }
 
-/* The Vix Section */
+/* THE VIX / TEAM SECTION */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 40px;
+    margin-top: 40px;
 }
 
 .photo-box {
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1.2;
     background: var(--accent);
-    border: 4px solid var(--main-text);
+    border: 5px solid var(--main-text);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: 900;
     color: var(--black);
     margin-bottom: 15px;
 }
 
+.role { font-weight: bold; color: var(--accent); }
+.secret-mode .role { color: var(--black); font-style: italic; }
+
+/* TEXT BLOCKS / STICKERS */
 .sticker {
     background: var(--card-bg);
-    border: 4px dashed var(--main-text);
-    padding: 40px;
-    border-radius: 50px;
-    margin-bottom: 50px;
+    border: 5px dashed var(--main-text);
+    padding: 50px;
+    border-radius: 40px;
+}
+
+footer {
+    text-align: center;
+    padding: 50px;
+    font-weight: bold;
+    font-size: 0.7rem;
+    opacity: 0.6;
 }
