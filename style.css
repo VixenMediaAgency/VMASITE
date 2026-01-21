@@ -1,73 +1,55 @@
 :root {
-    --bg: #000000;
-    --primary: #FF69B4; /* Hot Pink */
-    --secondary: #FFC1CC; /* Bubblegum Pink */
-    --text: #ffffff;
+    --black: #000000;
+    --hot-pink: #FF007F; /* Vibrant Hot Pink */
+    --bubblegum: #FFC1CC;
+    
+    /* Default Mode Mapping */
+    --bg: var(--black);
+    --main-text: var(--hot-pink);
+    --accent: var(--bubblegum);
+    --card-bg: #111;
 }
 
-/* Secret Mode Colors */
+/* The Inversion Logic - Keeps it readable but swaps the "Vibe" */
 .secret-mode {
-    --bg: #ffffff;
-    --primary: #000000;
-    --secondary: #333333;
-    --text: #000000;
+    --bg: var(--hot-pink);
+    --main-text: var(--black);
+    --accent: var(--bubblegum);
+    --card-bg: var(--bubblegum);
 }
+
+* { box-sizing: border-box; }
 
 body {
     background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--main-text);
+    font-family: 'Space Grotesk', sans-serif;
     margin: 0;
-    transition: background 0.3s ease;
+    overflow-x: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-header {
-    padding: 2rem;
-    text-align: center;
-    border-bottom: 2px solid var(--primary);
-}
-
-nav a {
-    color: var(--secondary);
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-.logo {
-    color: var(--primary);
-    font-size: 3rem;
-    letter-spacing: 5px;
-    margin-top: 1rem;
-}
-
-#secret-trigger {
-    cursor: crosshair;
-}
-
-/* Ticker Logic */
+/* Hyperpop Ticker */
 .ticker-wrap {
     display: none;
     width: 100%;
-    background: var(--primary);
+    background: var(--main-text);
     color: var(--bg);
-    padding: 10px 0;
-    overflow: hidden;
-    position: sticky;
+    padding: 15px 0;
+    font-family: 'Archivo Black', sans-serif;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 9999;
+    border-bottom: 4px solid var(--accent);
 }
 
-.secret-mode .ticker-wrap {
-    display: block;
-}
+.secret-mode .ticker-wrap { display: block; }
 
 .ticker {
     display: inline-block;
     white-space: nowrap;
-    animation: scroll 20s linear infinite;
-    font-weight: bold;
+    animation: scroll 15s linear infinite;
+    font-size: 1.2rem;
 }
 
 @keyframes scroll {
@@ -75,58 +57,123 @@ nav a {
     to { transform: translateX(-100%); }
 }
 
-/* Layout */
+/* Massive Title */
+header {
+    padding: 100px 20px 50px;
+    text-align: center;
+}
+
+.main-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(3rem, 15vw, 12rem); /* Dynamic huge sizing */
+    line-height: 0.8;
+    margin: 0;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    word-break: break-all;
+}
+
+#secret-trigger {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#secret-trigger:hover {
+    color: var(--accent);
+}
+
+/* Nav */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.nav-links a {
+    color: var(--main-text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border: 2px solid var(--main-text);
+}
+
+.nav-links a:hover {
+    background: var(--main-text);
+    color: var(--bg);
+}
+
+/* Content Grid */
 main {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-section {
-    padding: 40px 0;
-    border-bottom: 1px solid #333;
-}
-
-h2 {
-    color: var(--primary);
-    border-left: 5px solid var(--primary);
-    padding-left: 15px;
+.section-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-decoration: underline var(--accent);
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-article {
-    background: #111;
-    padding: 15px;
-    border: 1px solid var(--secondary);
-}
-
-.secret-mode article {
-    background: #eee;
-}
-
-.team-grid {
-    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    flex-wrap: wrap;
+    margin-bottom: 60px;
 }
 
-.headshot-placeholder {
-    width: 150px;
-    height: 150px;
-    background: var(--secondary);
+/* Sticker/Bubblepop Card Style */
+.card {
+    background: var(--card-bg);
+    border: 4px solid var(--main-text);
+    padding: 25px;
+    box-shadow: 10px 10px 0px var(--main-text);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px var(--accent);
+}
+
+.mini-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: var(--main-text);
+    color: var(--bg);
+    padding: 8px 15px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* The Vix Section */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.photo-box {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--accent);
+    border: 4px solid var(--main-text);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #000;
-    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--black);
+    margin-bottom: 15px;
 }
 
-.text-block p {
-    line-height: 1.6;
-    max-width: 700px;
+.sticker {
+    background: var(--card-bg);
+    border: 4px dashed var(--main-text);
+    padding: 40px;
+    border-radius: 50px;
+    margin-bottom: 50px;
 }
