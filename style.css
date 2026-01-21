@@ -3,7 +3,6 @@
     --hot-pink: #FF007F;
     --bubblegum: #FFC1CC;
     
-    /* DEFAULT MODE */
     --bg: var(--black);
     --main-text: var(--hot-pink);
     --accent: var(--bubblegum);
@@ -11,7 +10,6 @@
 }
 
 .secret-mode {
-    /* INVERTED MODE */
     --bg: var(--hot-pink);
     --main-text: var(--black);
     --accent: var(--bubblegum);
@@ -57,13 +55,12 @@ nav {
     padding: 8px 15px;
     border: 3px solid var(--main-text);
     font-size: 0.8rem;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s;
 }
 
 .nav-links a:hover {
     background: var(--main-text);
     color: var(--bg);
-    transform: scale(1.05);
 }
 
 /* SECRET TICKER */
@@ -94,7 +91,7 @@ nav {
     to { transform: translateX(-100%); }
 }
 
-/* TITLE LOGO */
+/* LOGO */
 header {
     padding: 60px 20px;
     text-align: center;
@@ -111,19 +108,9 @@ header {
     align-items: center;
 }
 
-.line:last-child {
-    color: var(--accent);
-}
+.line:last-child { color: var(--accent); }
 
-#secret-trigger {
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-#secret-trigger:hover {
-    color: white;
-    text-shadow: 0 0 20px var(--accent);
-}
+#secret-trigger { cursor: pointer; }
 
 /* LAYOUT */
 main {
@@ -143,10 +130,8 @@ section {
     border-bottom: 10px solid var(--main-text);
     margin-bottom: 40px;
     display: inline-block;
-    letter-spacing: -2px;
 }
 
-/* CARDS */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -158,7 +143,7 @@ section {
     border: 6px solid var(--main-text);
     padding: 35px;
     box-shadow: 15px 15px 0px var(--main-text);
-    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.3s;
 }
 
 .card:hover {
@@ -174,10 +159,9 @@ section {
     padding: 12px 20px;
     text-decoration: none;
     font-weight: 900;
-    font-size: 0.9rem;
 }
 
-/* TEAM GRID */
+/* TEAM */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -193,34 +177,19 @@ section {
     align-items: center;
     justify-content: center;
     font-weight: 900;
-    font-size: 1.5rem;
     color: var(--black);
     margin-bottom: 20px;
 }
 
-.role {
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.secret-mode .role { color: var(--black); }
-
-/* STICKERS */
 .sticker {
     background: var(--card-bg);
     border: 6px dashed var(--main-text);
     padding: 60px;
     border-radius: 50px;
-    line-height: 1.6;
-    font-size: 1.1rem;
 }
 
 footer {
     text-align: center;
     padding: 100px 20px;
     font-weight: 900;
-    letter-spacing: 2px;
-    text-transform: uppercase;
 }
