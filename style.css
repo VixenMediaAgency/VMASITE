@@ -3,7 +3,7 @@
     --hot-pink: #FF007F;
     --bubblegum: #FFC1CC;
     
-    /* DEFAULT COLORS */
+    /* DEFAULT MODE */
     --bg: var(--black);
     --main-text: var(--hot-pink);
     --accent: var(--bubblegum);
@@ -11,11 +11,15 @@
 }
 
 .secret-mode {
-    /* INVERTED COLORS: Hot Pink Bg, Black/Bubblegum Details */
+    /* INVERTED MODE */
     --bg: var(--hot-pink);
     --main-text: var(--black);
     --accent: var(--bubblegum);
     --card-bg: var(--bubblegum);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 * { box-sizing: border-box; }
@@ -26,44 +30,20 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     margin: 0;
     transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
 }
 
-/* THE SECRET TICKER */
-.ticker-wrap {
-    display: none;
-    width: 100%;
-    background: var(--main-text);
-    color: var(--bg);
-    padding: 12px 0;
-    font-family: 'Archivo Black', sans-serif;
-    position: fixed;
+/* NAVIGATION */
+nav {
+    position: sticky;
     top: 0;
-    z-index: 10000;
-    border-bottom: 5px solid var(--accent);
-}
-
-.secret-mode .ticker-wrap { display: block; }
-
-.ticker {
-    display: inline-block;
-    white-space: nowrap;
-    animation: scroll 20s linear infinite;
-    font-size: 1.1rem;
-}
-
-@keyframes scroll {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-}
-
-/* BIG MONOLITH HEADER */
-header {
-    padding: 80px 20px 40px;
-    text-align: center;
+    background: var(--bg);
+    z-index: 9000;
+    padding: 20px 0;
+    transition: background 0.4s ease;
 }
 
 .nav-links {
-    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -74,112 +54,173 @@ header {
     color: var(--main-text);
     text-decoration: none;
     font-weight: 700;
-    padding: 5px 12px;
+    padding: 8px 15px;
     border: 3px solid var(--main-text);
     font-size: 0.8rem;
-    transition: 0.2s;
+    transition: 0.2s ease-in-out;
 }
 
 .nav-links a:hover {
     background: var(--main-text);
     color: var(--bg);
+    transform: scale(1.05);
+}
+
+/* SECRET TICKER */
+.ticker-wrap {
+    display: none;
+    width: 100%;
+    background: var(--main-text);
+    color: var(--bg);
+    padding: 12px 0;
+    font-family: 'Archivo Black', sans-serif;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+}
+
+.secret-mode .ticker-wrap { display: block; }
+.secret-mode nav { top: 48px; }
+
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+    font-size: 1rem;
+}
+
+@keyframes scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* TITLE LOGO */
+header {
+    padding: 60px 20px;
+    text-align: center;
 }
 
 .main-title {
     font-family: 'Archivo Black', sans-serif;
-    font-size: clamp(3rem, 18vw, 15rem);
+    font-size: clamp(3.5rem, 20vw, 16rem);
     line-height: 0.8;
-    margin: 0;
-    letter-spacing: -4px;
+    margin: 40px 0;
+    letter-spacing: -6px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.line:last-child { color: var(--accent); }
-.secret-mode .line:last-child { color: var(--black); }
+.line:last-child {
+    color: var(--accent);
+}
 
-#secret-trigger { cursor: pointer; }
+#secret-trigger {
+    cursor: pointer;
+    transition: 0.2s;
+}
 
-/* LAYOUT & CARDS */
+#secret-trigger:hover {
+    color: white;
+    text-shadow: 0 0 20px var(--accent);
+}
+
+/* LAYOUT */
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
-section { margin-bottom: 100px; }
+section {
+    margin-bottom: 150px;
+    scroll-margin-top: 100px;
+}
 
 .section-label {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 3rem;
-    border-bottom: 8px solid var(--main-text);
+    font-size: 3.5rem;
+    border-bottom: 10px solid var(--main-text);
+    margin-bottom: 40px;
     display: inline-block;
-    margin-bottom: 30px;
+    letter-spacing: -2px;
 }
 
+/* CARDS */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 40px;
 }
 
 .card {
     background: var(--card-bg);
-    border: 5px solid var(--main-text);
-    padding: 30px;
-    box-shadow: 12px 12px 0px var(--main-text);
-    transition: 0.3s;
+    border: 6px solid var(--main-text);
+    padding: 35px;
+    box-shadow: 15px 15px 0px var(--main-text);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.card:hover { transform: translate(-5px, -5px); box-shadow: 18px 18px 0px var(--accent); }
+.card:hover {
+    transform: translate(-8px, -8px);
+    box-shadow: 25px 25px 0px var(--accent);
+}
 
 .mini-btn {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 25px;
     background: var(--main-text);
     color: var(--bg);
-    padding: 10px 20px;
+    padding: 12px 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 900;
+    font-size: 0.9rem;
 }
 
-/* THE VIX / TEAM SECTION */
+/* TEAM GRID */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
-    margin-top: 40px;
 }
 
 .photo-box {
     width: 100%;
-    aspect-ratio: 1 / 1.2;
+    aspect-ratio: 1;
     background: var(--accent);
-    border: 5px solid var(--main-text);
+    border: 6px solid var(--main-text);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 900;
+    font-size: 1.5rem;
     color: var(--black);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.role { font-weight: bold; color: var(--accent); }
-.secret-mode .role { color: var(--black); font-style: italic; }
+.role {
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
 
-/* TEXT BLOCKS / STICKERS */
+.secret-mode .role { color: var(--black); }
+
+/* STICKERS */
 .sticker {
     background: var(--card-bg);
-    border: 5px dashed var(--main-text);
-    padding: 50px;
-    border-radius: 40px;
+    border: 6px dashed var(--main-text);
+    padding: 60px;
+    border-radius: 50px;
+    line-height: 1.6;
+    font-size: 1.1rem;
 }
 
 footer {
     text-align: center;
-    padding: 50px;
-    font-weight: bold;
-    font-size: 0.7rem;
-    opacity: 0.6;
+    padding: 100px 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
