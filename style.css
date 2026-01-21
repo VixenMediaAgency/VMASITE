@@ -1,0 +1,132 @@
+:root {
+    --bg: #000000;
+    --primary: #FF69B4; /* Hot Pink */
+    --secondary: #FFC1CC; /* Bubblegum Pink */
+    --text: #ffffff;
+}
+
+/* Secret Mode Colors */
+.secret-mode {
+    --bg: #ffffff;
+    --primary: #000000;
+    --secondary: #333333;
+    --text: #000000;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    transition: background 0.3s ease;
+}
+
+header {
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary);
+}
+
+nav a {
+    color: var(--secondary);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.logo {
+    color: var(--primary);
+    font-size: 3rem;
+    letter-spacing: 5px;
+    margin-top: 1rem;
+}
+
+#secret-trigger {
+    cursor: crosshair;
+}
+
+/* Ticker Logic */
+.ticker-wrap {
+    display: none;
+    width: 100%;
+    background: var(--primary);
+    color: var(--bg);
+    padding: 10px 0;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.secret-mode .ticker-wrap {
+    display: block;
+}
+
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+    font-weight: bold;
+}
+
+@keyframes scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* Layout */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    padding: 40px 0;
+    border-bottom: 1px solid #333;
+}
+
+h2 {
+    color: var(--primary);
+    border-left: 5px solid var(--primary);
+    padding-left: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+article {
+    background: #111;
+    padding: 15px;
+    border: 1px solid var(--secondary);
+}
+
+.secret-mode article {
+    background: #eee;
+}
+
+.team-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.headshot-placeholder {
+    width: 150px;
+    height: 150px;
+    background: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.text-block p {
+    line-height: 1.6;
+    max-width: 700px;
+}
