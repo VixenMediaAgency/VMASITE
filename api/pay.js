@@ -8,11 +8,18 @@ export default async function handler(req, res) {
       headers: { 'Authorization': `Bearer ${apiKey}` }
     });
 
+    // Check if the bank actually liked the key
+    if (!response.ok) {
+        return res.status(500).send(`Bank rejected the key. Status: ${response.status}`);
+    }
+
     const token = await response.text();
     const cleanToken = token.replace(/"/g, '');
+    
+    // Send the user to the bank!
     res.redirect(`https://banking.gta.world/gateway/${cleanToken}`);
     
   } catch (error) {
-    res.status(500).send("Bank Connection Failed. The API Key might be expired.");
+    res.status(500).send("Network Error: Could not reach the bank servers.");
   }
 }
