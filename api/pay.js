@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   // WE ARE TEMPORARILY HARDCODING THE KEY TO TEST
-  const apiKey = "7c243884-6338-4e3a-9e0c-8d1964253902"; 
+  const apiKey = "6a1bc37a64b314b0b75ae9b94970add2d1dd3c387263a5db71a61628e7b554d8"; 
 
   try {
     const response = await fetch(`https://banking.gta.world/gateway_token/generateToken?price=2700&type=0`, {
