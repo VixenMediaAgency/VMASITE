@@ -652,3 +652,657 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPPORT VIXEN MEDIA - Indie Journalism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #fff;
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.5);
+        }
+
+        header h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 3rem;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 0px #fff;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #000;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* PROGRESS SECTION */
+        .progress-section {
+            background: #000;
+            border: 3px solid #ff00ff;
+            margin: 40px 20px;
+            padding: 30px;
+            box-shadow: 10px 10px 0px #00ffff;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .progress-header h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            color: #ff00ff;
+            text-transform: uppercase;
+        }
+
+        .progress-meta {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-item .label {
+            font-size: 0.9rem;
+            color: #00ffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .meta-item .value {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        /* PROGRESS BAR */
+        .progress-bar-wrapper {
+            margin: 30px 0;
+        }
+
+        .bar-background {
+            width: 100%;
+            height: 40px;
+            background: #222;
+            border: 2px solid #00ffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        .bar-fill.filled {
+            width: 45%;
+        }
+
+        .bar-percentage {
+            font-family: 'Archivo Black', sans-serif;
+            color: #000;
+            font-weight: 700;
+            font-size: 1rem;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .bar-label {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #00ffff;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            color: #ff00ff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px #00ffff;
+            letter-spacing: 2px;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-highlight {
+            color: #00ffff;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* TIERS */
+        .tiers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .tier {
+            border: 3px solid #fff;
+            padding: 40px 30px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #111;
+        }
+
+        .tier:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 0, 255, 0.4);
+        }
+
+        .tier.featured {
+            border: 4px solid #ff00ff;
+            background: #1a001a;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6), inset 0 0 20px rgba(255, 0, 255, 0.2);
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00ffff;
+            color: #000;
+            padding: 8px 20px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tier.featured .tier-badge {
+            background: #ff00ff;
+            color: #fff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 255, 0.8); }
+            50% { box-shadow: 0 0 20px rgba(255, 0, 255, 1); }
+        }
+
+        .tier-name {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            color: #00ffff;
+            text-transform: uppercase;
+            margin: 20px 0 15px 0;
+            letter-spacing: 1px;
+        }
+
+        .tier.featured .tier-name {
+            color: #ff00ff;
+        }
+
+        .tier-price {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tier-frequency {
+            color: #00ffff;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .tier.featured .tier-frequency {
+            color: #ff00ff;
+        }
+
+        .tier-subscribers {
+            background: #222;
+            border: 2px solid #00ffff;
+            padding: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-family: 'Archivo Black', sans-serif;
+        }
+
+        .tier.featured .tier-subscribers {
+            border-color: #ff00ff;
+            background: rgba(255, 0, 255, 0.1);
+        }
+
+        .subscriber-count {
+            font-size: 2rem;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .subscriber-label {
+            font-size: 0.85rem;
+            color: #00ffff;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .tier.featured .subscriber-label {
+            color: #ff00ff;
+        }
+
+        .tier-benefits {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .tier-benefits li {
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .tier-benefits li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-benefits li:before {
+            content: "▸ ";
+            color: #00ffff;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .tier.featured .tier-benefits li:before {
+            color: #ff00ff;
+        }
+
+        .tier-cta {
+            width: 100%;
+            padding: 16px 24px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 3px solid #00ffff;
+            background: #000;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .tier-cta:hover {
+            background: #00ffff;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .tier.featured .tier-cta {
+            border-color: #ff00ff;
+            color: #ff00ff;
+        }
+
+        .tier.featured .tier-cta:hover {
+            background: #ff00ff;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+        }
+
+        /* WHY SUPPORT */
+        .why-support {
+            background: #000;
+            border: 3px solid #00ffff;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 10px 10px 0px #ff00ff;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .why-support h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: #ff00ff;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .why-support p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .why-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .why-list li {
+            padding: 15px 0 15px 40px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            border-bottom: 1px solid #333;
+        }
+
+        .why-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00ffff;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #ff00ff;
+            color: #000;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 80px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-top: 5px solid #00ffff;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .tier.featured {
+                transform: scale(1);
+            }
+
+            .progress-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .progress-meta {
+                width: 100%;
+                justify-content: space-around;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>VIXEN MEDIA</h1>
+        <p>Support Independent Journalism. Fund the Truth.</p>
+    </header>
+
+    <!-- PROGRESS SECTION -->
+    <div class="progress-section">
+        <div class="progress-header">
+            <h2>MONTHLY SURVIVAL TARGET</h2>
+            <div class="progress-meta">
+                <div class="meta-item">
+                    <div class="label">Monthly Goal</div>
+                    <div class="value">$1.44M</div>
+                </div>
+                <div class="meta-item">
+                    <div class="label">Current Month</div>
+                    <div class="value" id="current-month">September</div>
+                </div>
+                <div class="meta-item">
+                    <div class="label">Raised This Month</div>
+                    <div class="value" id="monthly-total">$0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-bar-wrapper">
+            <div class="bar-background">
+                <div class="bar-fill" id="progress-fill">
+                    <span class="bar-percentage" id="progress-percent">0%</span>
+                </div>
+            </div>
+            <div class="bar-label" id="bar-label">$0 of $1,440,000 monthly goal</div>
+        </div>
+    </div>
+
+    <main>
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+            <h2>Keep Independent Media Alive</h2>
+            <p>Vixen Media Agency breaks stories the powerful don't want told. <span class="cta-highlight">No corporate overlords. No advertisers. Just journalism.</span></p>
+            <p>We need <span class="cta-highlight">$1.44M every month</span> to survive. Every subscription directly funds our investigations, interviews, and intelligence. You're not just donating—you're keeping the lights on for real journalism.</p>
+        </section>
+
+        <!-- TIERS -->
+        <div class="tiers-container">
+            <!-- TIER 1 -->
+            <div class="tier">
+                <div class="tier-badge">INDEPENDENT</div>
+                <div class="tier-name">Scout</div>
+                <div class="tier-price">$7,000</div>
+                <div class="tier-frequency">per month</div>
+
+                <div class="tier-subscribers">
+                    <div class="subscriber-count">205</div>
+                    <div class="subscriber-label">Current Subscribers</div>
+                </div>
+
+                <p style="font-size: 1.1rem; line-height: 1.6; margin: 30px 0; color: #ccc;">Support independent journalism. Keep the lights on. Keep the truth coming.</p>
+
+                <a class="tier-cta" href="/api/subscribe?tier=scout">Support at $7,000/mo</a>
+            </div>
+
+            <!-- TIER 2 (FEATURED) -->
+            <div class="tier featured">
+                <div class="tier-badge">MOST POPULAR</div>
+                <div class="tier-name">Operative</div>
+                <div class="tier-price">$14,000</div>
+                <div class="tier-frequency">per month</div>
+
+                <div class="tier-subscribers">
+                    <div class="subscriber-count">102</div>
+                    <div class="subscriber-label">Current Subscribers</div>
+                </div>
+
+                <p style="font-size: 1.1rem; line-height: 1.6; margin: 30px 0; color: #ccc;">Be the backbone of real journalism. No compromises. No corporate interests.</p>
+
+                <a class="tier-cta" href="/api/subscribe?tier=operative">Support at $14,000/mo</a>
+            </div>
+
+            <!-- TIER 3 -->
+            <div class="tier">
+                <div class="tier-badge">FOUNDING MEMBER</div>
+                <div class="tier-name">Director</div>
+                <div class="tier-price">$21,000</div>
+                <div class="tier-frequency">per month</div>
+
+                <div class="tier-subscribers">
+                    <div class="subscriber-count">68</div>
+                    <div class="subscriber-label">Current Subscribers</div>
+                </div>
+
+                <p style="font-size: 1.1rem; line-height: 1.6; margin: 30px 0; color: #ccc;">Stand with independent media at the highest level. Fund the mission. Fund the truth.</p>
+
+                <a class="tier-cta" href="/api/subscribe?tier=director">Support at $21,000/mo</a>
+            </div>
+        </div>
+
+        <!-- WHY SUPPORT -->
+        <section class="why-support">
+            <h3>Why Vixen Media Matters</h3>
+            <p>In a world where corporate media serves corporate interests, Vixen Media remains fiercely independent. We investigate. We expose. We document. And we do it without advertisers pulling our strings or sponsors silencing our voice.</p>
+            <p><strong>Real talk:</strong> We need $1.44 million every single month to keep the lights on. No ad revenue. No corporate backing. That's $1.44M that comes directly from subscribers like you who believe in independent journalism.</p>
+
+            <ul class="why-list">
+                <li><strong>Accountability Journalism:</strong> We track corruption in real time, holding power accountable when others look away.</li>
+                <li><strong>Independent Research:</strong> No paywalls for public interest. Your support makes critical information accessible.</li>
+                <li><strong>Boots on the Ground:</strong> Our team reports from the field, conducting interviews and investigations others won't touch.</li>
+                <li><strong>Your Voice Matters:</strong> Subscriber-funded means you direct the mission. Your support shapes what we investigate next.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>SHAME IS THE ONLY TOOL LEFT TO FIGHT BACK AGAINST CORRUPTION.</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">© 2026 VIXEN MEDIA AGENCY — SUPPORTING INDIE JOURNALISM</p>
+    </footer>
+
+    <script>
+        // Live funding tracker with localStorage persistence
+        const TIERS = {
+            scout: { price: 7000, name: 'Scout' },
+            operative: { price: 14000, name: 'Operative' },
+            director: { price: 21000, name: 'Director' }
+        };
+
+        const MONTHLY_SURVIVAL_GOAL = 1440000; // $1.44M per month to survive
+
+        // Initialize or load subscriber counts from localStorage
+        function initSubscribers() {
+            const stored = localStorage.getItem('vixen_subscribers');
+            if (!stored) {
+                localStorage.setItem('vixen_subscribers', JSON.stringify({
+                    scout: 0,
+                    operative: 0,
+                    director: 0
+                }));
+            }
+        }
+
+        function getSubscribers() {
+            return JSON.parse(localStorage.getItem('vixen_subscribers'));
+        }
+
+        function saveSubscribers(data) {
+            localStorage.setItem('vixen_subscribers', JSON.stringify(data));
+            updateProgress();
+        }
+
+        function calculateMonthlyFunding() {
+            const subscribers = getSubscribers();
+            const scoutRevenue = TIERS.scout.price * subscribers.scout;
+            const operativeRevenue = TIERS.operative.price * subscribers.operative;
+            const directorRevenue = TIERS.director.price * subscribers.director;
+            
+            return scoutRevenue + operativeRevenue + directorRevenue;
+        }
+
+        function updateProgress() {
+            const subscribers = getSubscribers();
+            const now = new Date();
+            const monthName = now.toLocaleString('default', { month: 'long' });
+            const monthlyFunding = calculateMonthlyFunding();
+            const monthlyPercent = Math.min((monthlyFunding / MONTHLY_SURVIVAL_GOAL) * 100, 100);
+            
+            // Update DOM
+            document.getElementById('current-month').textContent = monthName;
+            document.getElementById('monthly-total').textContent = '$' + (monthlyFunding / 1000).toFixed(0) + 'K';
+            
+            const barFill = document.getElementById('progress-fill');
+            barFill.style.width = monthlyPercent + '%';
+            document.getElementById('progress-percent').textContent = Math.round(monthlyPercent) + '%';
+            document.getElementById('bar-label').textContent = `$${monthlyFunding.toLocaleString()} of $1,440,000 monthly goal`;
+
+            // Update subscriber counts in tiers
+            document.querySelectorAll('.tier').forEach(tier => {
+                const tierName = tier.querySelector('.tier-name').textContent.toLowerCase();
+                const subCount = tier.querySelector('.subscriber-count');
+                if (subCount) {
+                    subCount.textContent = subscribers[tierName] || 0;
+                }
+            });
+        }
+
+        // Initialize
+        initSubscribers();
+        updateProgress();
+
+        // Note: subscriber counts here are a local, per-browser demo only —
+        // they aren't driven by real completed payments. Wire updateProgress()
+        // up to your actual subscriber records if you want a live number.
+
+        // Update progress in real-time
+        setInterval(updateProgress, 1000);
+    </script>
+
+</body>
+</html>
