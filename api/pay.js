@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         amount: 2700,
-        mode: 0,
+        mode: 0, // Change to 1 when you're ready for live production payments
         description: "Vixen Media Agency Subscription"
       })
     });
@@ -23,11 +23,16 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     
-    // THIS PRINTS THE RAW JSON RESPONSE TO YOUR SCREEN
-    return res.status(200).json(data);
+    // Check if the payment link exists in the response
+    if (!data.payment_link) {
+      return res.status(500).send("API succeeded, but no payment link was returned.");
+    }
+    
+    // Redirect the user straight to the bank's payment page
+    return res.redirect(data.payment_link);
      
   } catch (error) {
     console.error(error);
-    return res.status(500).send("Network Error");
+    return res.status(500).send("Network Error: Could not reach the bank servers.");
   }
 }
