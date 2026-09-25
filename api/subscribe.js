@@ -11,9 +11,9 @@
 // against your bank account.
 
 const TIERS = {
-  scout:     { amount: 7000,  name: "Scout" },
-  operative: { amount: 14000, name: "Operative" },
-  director:  { amount: 21000, name: "Director" },
+  scout:     { amount: 7000,  name: "Babe" },
+  operative: { amount: 14000, name: "Diva" },
+  director:  { amount: 21000, name: "Ultra-Cunt" },
 };
 
 export default async function handler(req, res) {
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         amount: tier.amount, // matches exactly what the page shows for this tier
-        mode: 0, // switch to 1 when you're ready for live production payments
+        mode: 1, // switch to 1 when you're ready for live production payments
         description: `Vixen Media Agency Subscription — ${tier.name}`,
       }),
     });
