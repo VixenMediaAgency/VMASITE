@@ -45,104 +45,6 @@
             text-transform: uppercase;
         }
 
-        /* PROGRESS SECTION */
-        .progress-section {
-            background: #000;
-            border: 3px solid #ff00ff;
-            margin: 40px 20px;
-            padding: 30px;
-            box-shadow: 10px 10px 0px #00ffff;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .progress-header h2 {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.5rem;
-            color: #ff00ff;
-            text-transform: uppercase;
-        }
-
-        .progress-meta {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .meta-item {
-            text-align: center;
-        }
-
-        .meta-item .label {
-            font-size: 0.9rem;
-            color: #00ffff;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .meta-item .value {
-            font-family: 'Archivo Black', sans-serif;
-            font-size: 1.8rem;
-            color: #fff;
-        }
-
-        /* PROGRESS BAR */
-        .progress-bar-wrapper {
-            margin: 30px 0;
-        }
-
-        .bar-background {
-            width: 100%;
-            height: 40px;
-            background: #222;
-            border: 2px solid #00ffff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            width: 0%;
-            transition: width 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 10px;
-            box-shadow: inset 0 0 20px rgba(255, 0, 255, 0.5);
-        }
-
-        .bar-fill.filled {
-            width: 45%;
-        }
-
-        .bar-percentage {
-            font-family: 'Archivo Black', sans-serif;
-            color: #000;
-            font-weight: 700;
-            font-size: 1rem;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
-        }
-
-        .bar-label {
-            text-align: right;
-            font-size: 0.85rem;
-            color: #00ffff;
-            margin-top: 8px;
-            font-weight: 700;
-        }
-
         /* MAIN CONTENT */
         main {
             max-width: 1400px;
@@ -409,16 +311,6 @@
             .tier.featured {
                 transform: scale(1);
             }
-
-            .progress-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .progress-meta {
-                width: 100%;
-                justify-content: space-around;
-            }
         }
     </style>
 </head>
@@ -428,36 +320,6 @@
         <h1>VIXEN MEDIA</h1>
         <p>Support Independent Journalism. Fund the Truth.</p>
     </header>
-
-    <!-- PROGRESS SECTION -->
-    <div class="progress-section">
-        <div class="progress-header">
-            <h2>MONTHLY SURVIVAL TARGET</h2>
-            <div class="progress-meta">
-                <div class="meta-item">
-                    <div class="label">Monthly Goal</div>
-                    <div class="value">$1.44M</div>
-                </div>
-                <div class="meta-item">
-                    <div class="label">Current Month</div>
-                    <div class="value" id="current-month">September</div>
-                </div>
-                <div class="meta-item">
-                    <div class="label">Raised This Month</div>
-                    <div class="value" id="monthly-total">$0</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="progress-bar-wrapper">
-            <div class="bar-background">
-                <div class="bar-fill" id="progress-fill">
-                    <span class="bar-percentage" id="progress-percent">0%</span>
-                </div>
-            </div>
-            <div class="bar-label" id="bar-label">$0 of $1,440,000 monthly goal</div>
-        </div>
-    </div>
 
     <main>
         <!-- CTA SECTION -->
@@ -519,80 +381,25 @@
                 <li><strong>Your Voice Matters:</strong> Subscriber-funded means you direct the mission. Your support shapes what we investigate next.</li>
             </ul>
         </section>
+
+        <!-- THE COLLECTIVE -->
+        <section class="why-support">
+            <h3>Where The Money Goes</h3>
+            <p>Vixen Media is run as a worker's collective. There's no owner skimming profit off the top — the $1,440,000 monthly goal is the payroll, split evenly across everyone who does the work.</p>
+
+            <ul class="why-list">
+                <li><strong>Monthly Goal:</strong> $1,440,000, funding our team in full.</li>
+                <li><strong>The Team:</strong> 9 worker-owners.</li>
+                <li><strong>Equal Pay:</strong> Every worker takes home the same share — no hierarchy, no bigger cut for title or seniority.</li>
+                <li><strong>Weekly Pay:</strong> $1,440,000 ÷ 9 workers ÷ 4 weeks = <strong>$40,000 per worker, per week.</strong></li>
+            </ul>
+        </section>
     </main>
 
     <footer>
         <p>SHAME IS THE ONLY TOOL LEFT TO FIGHT BACK AGAINST CORRUPTION.</p>
         <p style="margin-top: 10px; font-size: 0.9rem;">© 2026 VIXEN MEDIA AGENCY — SUPPORTING INDIE JOURNALISM</p>
     </footer>
-
-    <script>
-        // Live funding tracker with localStorage persistence
-        const TIERS = {
-            scout: { price: 7000, name: 'Scout' },
-            operative: { price: 14000, name: 'Operative' },
-            director: { price: 21000, name: 'Director' }
-        };
-
-        const MONTHLY_SURVIVAL_GOAL = 1440000; // $1.44M per month to survive
-
-        // Initialize or load subscriber counts from localStorage
-        function initSubscribers() {
-            const stored = localStorage.getItem('vixen_subscribers');
-            if (!stored) {
-                localStorage.setItem('vixen_subscribers', JSON.stringify({
-                    scout: 0,
-                    operative: 0,
-                    director: 0
-                }));
-            }
-        }
-
-        function getSubscribers() {
-            return JSON.parse(localStorage.getItem('vixen_subscribers'));
-        }
-
-        function saveSubscribers(data) {
-            localStorage.setItem('vixen_subscribers', JSON.stringify(data));
-            updateProgress();
-        }
-
-        function calculateMonthlyFunding() {
-            const subscribers = getSubscribers();
-            const scoutRevenue = TIERS.scout.price * subscribers.scout;
-            const operativeRevenue = TIERS.operative.price * subscribers.operative;
-            const directorRevenue = TIERS.director.price * subscribers.director;
-            
-            return scoutRevenue + operativeRevenue + directorRevenue;
-        }
-
-        function updateProgress() {
-            const now = new Date();
-            const monthName = now.toLocaleString('default', { month: 'long' });
-            const monthlyFunding = calculateMonthlyFunding();
-            const monthlyPercent = Math.min((monthlyFunding / MONTHLY_SURVIVAL_GOAL) * 100, 100);
-            
-            // Update DOM
-            document.getElementById('current-month').textContent = monthName;
-            document.getElementById('monthly-total').textContent = '$' + (monthlyFunding / 1000).toFixed(0) + 'K';
-            
-            const barFill = document.getElementById('progress-fill');
-            barFill.style.width = monthlyPercent + '%';
-            document.getElementById('progress-percent').textContent = Math.round(monthlyPercent) + '%';
-            document.getElementById('bar-label').textContent = `$${monthlyFunding.toLocaleString()} of $1,440,000 monthly goal`;
-        }
-
-        // Initialize
-        initSubscribers();
-        updateProgress();
-
-        // Note: subscriber counts here are a local, per-browser demo only —
-        // they aren't driven by real completed payments. Wire updateProgress()
-        // up to your actual subscriber records if you want a live number.
-
-        // Update progress in real-time
-        setInterval(updateProgress, 1000);
-    </script>
 
 </body>
 </html>
